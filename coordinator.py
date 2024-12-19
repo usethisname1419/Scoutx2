@@ -52,7 +52,9 @@ def main():
             matches = match_vulnerability(result["service"], result["version"])
             if matches:
                 for match in matches:
-                    print(f"Vulnerability Found: {match['id']} - {match['description']}")
+                    print(f"---<>---## Vulnerability Found: {match['id']} - {match['description']}")
+                else:
+                    print(f"[INFO] No Vulns Found for {service}.")
 
 if __name__ == "__main__":
     main()
