@@ -6,7 +6,7 @@ def load_cve_data():
         return json.load(file)
 
 
-def match_vulnerability(service):
+def match_vulnerability(service, version):
     cve_data = load_cve_data()
     matches = []
 
@@ -30,10 +30,3 @@ def match_vulnerability(service):
     return matches
 
 
-if __name__ == "__main__":
-    # Example usage for testing
-    print(match_vulnerability("apache"))
-    print(match_vulnerability("ssh"))
-    print(match_vulnerability("mysql"))
-    print(match_vulnerability("ftp"))
-    print(match_vulnerability("rdp"))
