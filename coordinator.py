@@ -53,8 +53,8 @@ def main():
             if matches:
                 for match in matches:
                     print(f"---<>---## Vulnerability Found: {match['id']} - {match['description']}")
-                else:
-                    print(f"[INFO] No Vulns Found for {service}.")
+            else:
+                print(f"[INFO] No Vulns Found for {service}.")
 
 if __name__ == "__main__":
     main()
