@@ -9,9 +9,13 @@ I created this tool as a proof of concept (PoC) after wondering, "How do hackers
 # Features:
 
 Scan local or regional networks: You can select between scanning a local IP (127.0.0.1) or generate a list of IPs from a specified region (North America or Europe).
+
 Fetch the latest CVE data: Automatically pulls CVE data from NIST, covering the last 25 days.
+
 Scan 1-100 IPs: Choose how many IPs to scan between 1 and 100, for both Windows and Linux systems.
+
 Vulnerability matching: Matches the CVE data against services like Apache, MySQL, SSH, and more to identify vulnerabilities.
+
 Scan report generation: Creates a detailed report of findings, including vulnerable services and any related CVEs.
 
 
