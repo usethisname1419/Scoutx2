@@ -57,6 +57,6 @@ A report is generated at the end with detailed results.
 
 As always, if you appreciate the tool, I accept donations to support further development.
 
-BTC: bc1qtezfajhysn6dut07m60vtg0s33jy8tqcvjqqzk
+BTC: `bc1qtezfajhysn6dut07m60vtg0s33jy8tqcvjqqzk`
 
 
