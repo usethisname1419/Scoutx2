@@ -3,7 +3,7 @@ import ipaddress
 import subprocess
 from tqdm import tqdm  # Progress bar library
 import itertools
-
+from logger import print_error
 # IP ranges for North America and Europe
 IP_RANGES = {
     "north_america": [
@@ -21,46 +21,49 @@ IP_RANGES = {
 }
 
 
-def ping_ip(ip):
+def ping_ip(ip, os_type="windows"):
     """
     Pings an IP address to check if it is reachable.
     Returns True if the IP is reachable, False otherwise.
+    Uses -n for Windows and -c for Linux.
     """
     try:
-        response = subprocess.run(['ping', '-c', '1', ip], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        ping_command = ['ping', '-n', '1', ip] if os_type.lower() == "windows" else ['ping', '-c', '1', ip]
+        response = subprocess.run(ping_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         return response.returncode == 0
-    except Exception:
+    except Exception as e:
+        print_error(f"Failed to ping {ip}: {e}")
         return False
 
 
-def generate_ips(region, num_ips=10):
+
+def generate_ips(region, num_ips=10, os_type="windows"):
     """
     Generates a list of random reachable IPs from the selected region's IP ranges.
     Only returns IPs that are reachable (pingable).
     Displays a progress bar while generating and pinging the IPs.
     """
+    if num_ips > 100:
+        print_error("Cannot generate more than 100 IPs.")
+        raise ValueError()
+
     reachable_ips = []
     networks = [ipaddress.ip_network(cidr) for cidr in IP_RANGES.get(region, [])]
 
-    # Progress bar setup
     with tqdm(total=num_ips, desc="Generating Pingable IPs", unit="IP", ncols=80, dynamic_ncols=True) as pbar:
         for _ in itertools.count():
-            # Select a random network and generate a random IP within it
             network = random.choice(networks)
-            random_ip = str(ipaddress.IPv4Address(random.randint(int(network.network_address), int(network.broadcast_address))))
+            random_ip = str(ipaddress.IPv4Address(random.randint(
+                int(network.network_address), int(network.broadcast_address))))
 
-            # Overwrite the line with the current IP being checked
-
-
-            # Ping the IP and check if it's reachable
-            if ping_ip(random_ip):
+            if ping_ip(random_ip, os_type):
                 reachable_ips.append(random_ip)
-                pbar.update(1)  # Update the progress bar after finding each reachable IP
+                pbar.update(1)
 
             if len(reachable_ips) >= num_ips:
-                print()  # End the "Checking IP" line
                 break
 
     return reachable_ips
+
 
 
