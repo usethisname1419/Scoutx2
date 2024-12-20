@@ -1,3 +1,4 @@
 requests
-tdqm
+tqdm
 python-nmap
+colorama
