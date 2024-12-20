@@ -15,7 +15,7 @@ def title():
     """
     Displays the title screen with ASCII art and branding information.
     """
-     art = r"""
+    art = r"""
  
  
  $$$$$$\                                  $$\                      $$$$$$\  
