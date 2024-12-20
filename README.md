@@ -42,10 +42,15 @@ To start the scan, simply run:
 # Workflow:
 
 Select scan type: Local or Regional.
+
 If Regional, select the region (North America or Europe).
+
 Choose the number of IPs to scan (1-100).
+
 The tool will fetch the latest CVE data from NIST for the last 25 days.
+
 It will scan the selected IPs for open ports and match them against known vulnerabilities.
+
 A report is generated at the end with detailed results.
 
 # Support
