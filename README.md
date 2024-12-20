@@ -63,3 +63,5 @@ BTC: `bc1qtezfajhysn6dut07m60vtg0s33jy8tqcvjqqzk`
 ## Notice
 
 You can get in trouble for using the regional scan as scanning things without consent is illegal - This is just a PoC
+
+If you find anything wrong please let me know and if you have any suggestions for this tool please reach out to me at @usethisusername on Telegram
