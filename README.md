@@ -12,7 +12,7 @@ Scan local or regional networks: You can select between scanning a local IP (127
 
 Fetch the latest CVE data: Automatically pulls CVE data from NIST, covering the last 25 days.
 
-Scan 1-100 IPs: Choose how many IPs to scan between 1 and 100, for both Windows and Linux systems.
+Scan 1-100 IPs: Choose how many IPs to scan between 1 and 100.
 
 Vulnerability matching: Matches the CVE data against services like Apache, MySQL, SSH, and more to identify vulnerabilities.
 
@@ -43,7 +43,7 @@ To start the scan, simply run:
 
 Select scan type: Local or Regional.
 
-If Regional, select the region (North America or Europe).
+If Regional, select the region (North America or Europe) and select your OS (Windows or Linux).
 
 Choose the number of IPs to scan (1-100).
 
