@@ -45,7 +45,7 @@ def scan_network(target_ip):
                 print("")
 
                 # Check if the service is one of the targeted services
-                if service.get("name") in target_services and port in target_services[service.get("name")]:
+                if service.get("state") == "open":
                     result.append({
                         "host": host,
                         "port": port,
