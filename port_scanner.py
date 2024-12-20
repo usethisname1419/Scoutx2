@@ -19,8 +19,11 @@ def scan_network(target_ip):
         "rabbitmq": [5672],  # RabbitMQ
     }
 
+    unique_ports = sorted(set(port for ports in target_services.values() for port in ports))
+    ports_str = ",".join(map(str, unique_ports))
+
     scanner = nmap.PortScanner()
-    scanner.scan(hosts=target_ip, arguments='-sV')
+    scanner.scan(hosts=target_ip, arguments=f'-sV -p {ports_str}')
     print(f"[DEBUG] Raw nmap scan results for {target_ip}: {scanner.scaninfo()}")
     print(f"[DEBUG] Detected hosts: {scanner.all_hosts()}")
     result = []
