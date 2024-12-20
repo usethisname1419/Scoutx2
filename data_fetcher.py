@@ -21,7 +21,7 @@ def fetch_cve_data():
     }
 
     # Fetch data
-    print_info("Fetching CVEs published between {start_date_str} and {end_date_str}.")
+    print_info(f"Fetching CVEs published between {start_date_str} and {end_date_str}.")
     response = requests.get(url, params=params)
     if response.status_code == 200:
         cve_data = response.json()
