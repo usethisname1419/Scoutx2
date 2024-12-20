@@ -24,8 +24,6 @@ def scan_network(target_ip):
 
     scanner = nmap.PortScanner()
     scanner.scan(hosts=target_ip, arguments=f'-sV -p {ports_str}')
-    print(f"[DEBUG] Raw nmap scan results for {target_ip}: {scanner.scaninfo()}")
-    print(f"[DEBUG] Detected hosts: {scanner.all_hosts()}")
     result = []
 
     for host in scanner.all_hosts():
