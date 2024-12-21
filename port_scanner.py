@@ -3,7 +3,8 @@ from logger import print_info
 def scan_network(target_ip):
     # Define the services and their associated ports to check for
     target_services = {
-        "apache": [80, 443, 8080],  # HTTP/HTTPS for Apache or Tomcat
+        "apache": [80, 443, 8080],
+        "nginx": [80, 443],# HTTP/HTTPS for Apache or Tomcat
         "ssh": [22],  # SSH
         "ftp": [21],  # FTP
         "mysql": [3306],  # MySQL
