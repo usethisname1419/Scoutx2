@@ -21,7 +21,7 @@ def match_vulnerability(service, version=None):
 
     # List of services we care about
     services_to_check = [
-        "apache", "ssh", "ftp", "mysql", "rdp",
+        "apache", "nginx", "ssh", "ftp", "mysql", "rdp",
         "netbios", "smb", "dns", "http-proxy",
         "postgresql", "redis", "elasticsearch", "mongodb", "rabbitmq"
     ]
