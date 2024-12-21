@@ -7,6 +7,7 @@ import time
 import logger
 from colorama import Fore, Style, init
 from logger import print_info, print_error, print_step
+
 # Initialize colorama
 init(autoreset=True)
 
@@ -17,7 +18,6 @@ def title():
     """
     art = r"""
  
- 
  $$$$$$\                                  $$\                      $$$$$$\  
 $$  __$$\                                 $$ |                    $$  __$$\ 
 $$ /  \__| $$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$\                   \__/  $$ |
@@ -25,14 +25,10 @@ $$ /  \__| $$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$\                   \__/  $$ |
  \____$$\ $$ /      $$ /  $$ |$$ |  $$ |  $$ |                    $$  ____/ 
 $$\   $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |$$\      \\//       $$ |      
 \$$$$$$  |\$$$$$$$\ \$$$$$$  |\$$$$$$  |  \$$$$  |     //\\       $$$$$$$$\ 
- \______/  \_______| \______/  \______/    \____/                 \________|
-                                                                              
-                                                                                                                                                       
+ \______/  \_______| \______/  \______/    \____/                 \________|  
        Powered by LTH Cybersecurity
     """
     print(art)
-
-
 
 
 def select_scan_type():
@@ -138,6 +134,10 @@ def main():
             print_info(f"Scanning IP: {ip}")
             try:
                 scan_results = scan_network(ip)
+                if not scan_results:
+                    print_info("No open services found on this IP.")
+                    continue
+
                 logger.log_host_info(ip, [result["port"] for result in scan_results])
                 time.sleep(0.5)
 
@@ -159,6 +159,8 @@ def main():
                         logger.log_no_vulnerabilities(result["host"], result["port"])
             except Exception as e:
                 print_error(f"Error scanning IP {ip}: {e}")
+
+        print_info("Scan complete. Report saved as 'scan_report.log'.")
     except Exception as e:
         print_error(f"Critical error in the program: {e}")
 
