@@ -26,6 +26,7 @@ def ping_ip(ip, os_type="windows"):
     Pings an IP address to check if it is reachable.
     Returns True if the IP is reachable, False otherwise.
     Uses -n for Windows and -c for Linux.
+    Does not allow for generating more than 100, To reduce abuse.
     """
     try:
         ping_command = ['ping', '-n', '1', ip] if os_type.lower() == "windows" else ['ping', '-c', '1', ip]
