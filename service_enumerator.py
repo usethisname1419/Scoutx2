@@ -13,7 +13,7 @@ def grab_banner(ip, port):
             elif port == 21:  # FTP
                 conn.sendall(b"USER anonymous\r\n")
             elif port == 22:  # SSH
-                conn.sendall(b"SSH-2.0-Scoutx2\r\n")
+                conn.sendall(b"SSH-2.0-Scoutx2\r\n") #Heatbag!!
             elif port == 3306:  # MySQL
                 conn.sendall(b"\x00\x00\x00\x00")
             elif port == 3389:  # RDP
