@@ -26,7 +26,7 @@ def ping_ip(ip, os_type="windows"):
     Pings an IP address to check if it is reachable.
     Returns True if the IP is reachable, False otherwise.
     Uses -n for Windows and -c for Linux.
-    Does not allow for generating more than 100, To reduce abuse.
+    
     """
     try:
         ping_command = ['ping', '-n', '1', ip] if os_type.lower() == "windows" else ['ping', '-c', '1', ip]
@@ -43,6 +43,7 @@ def generate_ips(region, num_ips=10, os_type="windows"):
     Generates a list of random reachable IPs from the selected region's IP ranges.
     Only returns IPs that are reachable (pingable).
     Displays a progress bar while generating and pinging the IPs.
+    Does not allow for generating more than 100, To reduce abuse.
     """
     if num_ips > 100:
         print_error("Cannot generate more than 100 IPs.")
